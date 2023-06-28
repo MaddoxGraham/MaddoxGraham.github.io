@@ -1,15 +1,23 @@
+var faceSection = document.getElementById("face-section");
 var face = document.getElementById("face");
+var nose = document.getElementById("nose");
 
-face.addEventListener("mousemove", function(event) {
-  var centerX = face.offsetLeft + face.offsetWidth / 2;
-  var centerY = face.offsetTop + face.offsetHeight / 2;
+faceSection.addEventListener("mousemove", function(event) {
+  var sectionWidth = faceSection.offsetWidth;
+  var sectionX = faceSection.getBoundingClientRect().left;
 
   var mouseX = event.clientX;
-  var mouseY = event.clientY;
 
-  var angle = Math.atan2(mouseY - centerY, mouseX - centerX);
-  var angleDeg = angle * (180 / Math.PI);
+  // Vérifier si la souris est dans la section du visage
+  if (mouseX >= sectionX && mouseX <= sectionX + sectionWidth) {
+    var centerX = face.offsetWidth / 2;
+    var centerY = face.offsetHeight / 2;
 
-  var nose = document.getElementById("nose");
-  nose.style.transform = "rotate(" + angleDeg + "deg)";
+    var faceX = face.getBoundingClientRect().left;
+
+    var faceMouseX = mouseX - faceX;
+    var angle = -30 + (faceMouseX / face.offsetWidth) * 60; // Angle d'inclinaison entre -30 et 30 degrés
+
+    nose.style.transform = "rotate(" + angle + "deg)";
+  }
 });

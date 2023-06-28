@@ -1,5 +1,22 @@
-#face {
+#content {
+    height: 500px; /* Hauteur de la section de contenu */
+    width: 60%; /* Largeur de la section de contenu */
+    margin: 0 auto; /* Centrer la section de contenu horizontalement */
+  }
+  
+  #face-section {
     position: relative;
+    height: 500px; /* Hauteur de la section du visage */
+    width: 40%; /* Largeur de la section du visage */
+    overflow: hidden;
+    float: right; /* Positionner la section du visage à droite */
+  }
+  
+  #face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 200px;
     height: 200px;
     background-color: #f0f0f0;
