@@ -1,23 +1,21 @@
-var faceSection = document.getElementById("face-section");
-var face = document.getElementById("face");
-var nose = document.getElementById("nose");
+const scene = new THREE.Scene();
 
-faceSection.addEventListener("mousemove", function(event) {
-  var sectionWidth = faceSection.offsetWidth;
-  var sectionX = faceSection.getBoundingClientRect().left;
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-  var mouseX = event.clientX;
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-  // Vérifier si la souris est dans la section du visage
-  if (mouseX >= sectionX && mouseX <= sectionX + sectionWidth) {
-    var centerX = face.offsetWidth / 2;
-    var centerY = face.offsetHeight / 2;
+function animate() {
+  requestAnimationFrame(animate);
+  
+  // Mettez à jour vos objets 3D ici
+  
+  renderer.render(scene, camera);
+}
 
-    var faceX = face.getBoundingClientRect().left;
-
-    var faceMouseX = mouseX - faceX;
-    var angle = -30 + (faceMouseX / face.offsetWidth) * 60; // Angle d'inclinaison entre -30 et 30 degrés
-
-    nose.style.transform = "rotate(" + angle + "deg)";
-  }
-});
+animate();
