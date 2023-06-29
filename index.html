@@ -54,7 +54,7 @@ const skyColors = [new THREE.Color(0xffaacc), new THREE.Color(0x6699ff)];
 skyGeometry.faces.forEach((face) => {
   face.vertexColors = skyColors;
 });
-const skyMaterial = new THREE.MeshBasicMaterial({ vertexColors: THREE.VertexColors });
+const skyMaterial = new THREE.MeshBasicMaterial({ vertexColors: THREE.VertexColors, side: THREE.BackSide });
 const sky = new THREE.Mesh(skyGeometry, skyMaterial);
 scene.add(sky);
 
