@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -26,6 +27,7 @@
       const groundMaterial = new THREE.MeshPhongMaterial({ color: 0xff8c00 });
       const ground = new THREE.Mesh(groundGeometry, groundMaterial);
       ground.rotation.x = -Math.PI / 2;
+      ground.position.y = -12.5; // Positionner le sol légèrement en dessous de l'origine
       scene.add(ground);
 
       // Créer les montagnes
