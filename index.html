@@ -58,6 +58,10 @@ const skyMaterial = new THREE.MeshBasicMaterial({ vertexColors: THREE.VertexColo
 const sky = new THREE.Mesh(skyGeometry, skyMaterial);
 scene.add(sky);
 
+// Ajouter une lumière d'ambiance
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
 camera.position.z = 30;
 
 function animate() {
