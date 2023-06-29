@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Ma test scène Three.js</title>
+    <title>test avec montagnes</title>
     <style>
       body {
         margin: 0;
@@ -11,38 +11,48 @@
   </head>
   <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer();
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-
-// Créer le sol orange
-const groundGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight / 4);
-const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xffa500 });
-const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-ground.position.set(0, -window.innerHeight / 8, -5); // Position ajustée pour le sol à un quart inférieur
-scene.add(ground);
-
-// Ajouter une lumière d'ambiance
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
-
-// Ajouter une lumière directionnelle
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
-directionalLight.position.set(0, 1, 0); // Position de la lumière
-scene.add(directionalLight);
-
-camera.position.z = 5;
-
-function animate() {
-  requestAnimationFrame(animate);
-  renderer.render(scene, camera);
-}
-
-animate();
+    <script>const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer();
+      
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+      
+      // Créer le sol orange
+      const groundGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight / 4);
+      const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xffa500 });
+      const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+      ground.position.set(0, -window.innerHeight / 8, -5);
+      scene.add(ground);
+      
+      // Créer les montagnes
+      const mountainGeometry = new THREE.ConeGeometry(10, 20, 32);
+      const mountainMaterial = new THREE.MeshBasicMaterial({ color: 0x8b4513 });
+      const mountain1 = new THREE.Mesh(mountainGeometry, mountainMaterial);
+      mountain1.position.set(-20, -window.innerHeight / 8, -40);
+      scene.add(mountain1);
+      
+      const mountain2 = new THREE.Mesh(mountainGeometry, mountainMaterial);
+      mountain2.position.set(20, -window.innerHeight / 8, -40);
+      scene.add(mountain2);
+      
+      // Ajouter une lumière d'ambiance
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+      
+      // Ajouter une lumière directionnelle
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
+      directionalLight.position.set(0, 1, 0); // Position de la lumière
+      scene.add(directionalLight);
+      
+      camera.position.z = 5;
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+      }
+      
+      animate();
     </script>
   </body>
 </html>
