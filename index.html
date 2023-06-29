@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>test avec montagnes 6    </title>
+    <title>test avec montagnes 7 </title>
     <style>
       body {
         margin: 0;
@@ -29,7 +29,7 @@ scene.add(ground);
 
 // Créer les montagnes
 const mountainGeometry = new THREE.ConeGeometry(10, 20, 32);
-const mountainMaterial = new THREE.MeshLambertMaterial({ color: 0x8b4513 });
+const mountainMaterial = new THREE.MeshPhongMaterial({ color: 0x8b4513 });
 const mountain1 = new THREE.Mesh(mountainGeometry, mountainMaterial);
 mountain1.position.set(-20, -window.innerHeight / 8 + 10, -40);
 scene.add(mountain1);
