@@ -19,66 +19,17 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Créer le sol du désert
-const groundGeometry = new THREE.PlaneGeometry(100, 100);
-const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xd2b48c });
+// Créer le sol orange
+const groundGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight / 4);
+const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xffa500 });
 const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-ground.rotation.x = -Math.PI / 2; // Pour le positionner à l'horizontale
+ground.position.y = -window.innerHeight / 4;
 scene.add(ground);
 
-// Créer les montagnes
-const mountainGeometry = new THREE.ConeGeometry(10, 20, 32);
-const mountainMaterial = new THREE.MeshBasicMaterial({ color: 0x8b4513 });
-const mountain1 = new THREE.Mesh(mountainGeometry, mountainMaterial);
-mountain1.position.set(-20, 10, -50);
-scene.add(mountain1);
-
-const mountain2 = new THREE.Mesh(mountainGeometry, mountainMaterial);
-mountain2.position.set(20, 10, -50);
-scene.add(mountain2);
-
-// Créer les nuages
-const cloudGeometry = new THREE.SphereGeometry(5, 32, 32);
-const cloudMaterial = new THREE.MeshLambertMaterial({ color: 0xffffff, opacity: 0.8, transparent: true });
-const cloud1 = new THREE.Mesh(cloudGeometry, cloudMaterial);
-cloud1.position.set(-10, 20, -40);
-scene.add(cloud1);
-
-const cloud2 = new THREE.Mesh(cloudGeometry, cloudMaterial);
-cloud2.position.set(15, 18, -30);
-scene.add(cloud2);
-
-// Créer le ciel rose/bleu
-const skyGeometry = new THREE.BoxGeometry(200, 200, 200);
-const skyColors = [new THREE.Color(0xffaacc), new THREE.Color(0x6699ff)];
-skyGeometry.faces.forEach((face) => {
-  face.vertexColors = skyColors;
-});
-const skyMaterial = new THREE.MeshBasicMaterial({ vertexColors: THREE.VertexColors, side: THREE.BackSide });
-const sky = new THREE.Mesh(skyGeometry, skyMaterial);
-scene.add(sky);
-
-// Ajouter une lumière d'ambiance
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
-
-camera.position.z = 30;
+camera.position.z = 5;
 
 function animate() {
   requestAnimationFrame(animate);
-
-  // Faire bouger les nuages
-  cloud1.position.x += 0.02;
-  cloud2.position.x += 0.01;
-
-  // Réinitialiser la position des nuages lorsqu'ils sortent de la scène
-  if (cloud1.position.x > 30) {
-    cloud1.position.x = -30;
-  }
-  if (cloud2.position.x > 30) {
-    cloud2.position.x = -30;
-  }
-
   renderer.render(scene, camera);
 }
 
