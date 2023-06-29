@@ -23,7 +23,8 @@ document.body.appendChild(renderer.domElement);
 const groundGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight / 4);
 const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xffa500 });
 const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-ground.position.y = -window.innerHeight / 4;
+ground.position.y = -window.innerHeight / 8; // Position ajustée pour le sol à un quart inférieur
+ground.rotation.x = -Math.PI / 2; // Pour le positionner à l'horizontale
 scene.add(ground);
 
 // Ajouter une lumière d'ambiance
