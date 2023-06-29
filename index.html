@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Ma première scène Three.js</title>
+    <title>Ma test scène Three.js</title>
     <style>
       body {
         margin: 0;
@@ -23,8 +23,7 @@ document.body.appendChild(renderer.domElement);
 const groundGeometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight / 4);
 const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xffa500 });
 const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-ground.position.y = -window.innerHeight / 8;
-ground.rotation.x = -Math.PI / 2;
+ground.position.set(0, -window.innerHeight / 8, -5); // Position ajustée pour le sol à un quart inférieur
 scene.add(ground);
 
 // Ajouter une lumière d'ambiance
