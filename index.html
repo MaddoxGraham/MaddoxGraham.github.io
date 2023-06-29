@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Affichage des montagnes, du sol et du ciel sans ombres</title>
+    <title>Affichage des montagnes, du sol et du ciel</title>
     <style>
       body {
         margin: 0;
@@ -42,7 +42,7 @@
 
       // Créer le ciel
       const skyGeometry = new THREE.BoxGeometry(200, 200, 200);
-      const skyMaterial = new THREE.MeshBasicMaterial({ color: 0xffc0cb });
+      const skyMaterial = new THREE.MeshBasicMaterial({ color: 0xffc0cb, side: THREE.BackSide });
       const sky = new THREE.Mesh(skyGeometry, skyMaterial);
       scene.add(sky);
 
