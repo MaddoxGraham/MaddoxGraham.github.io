@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Affichage des montagnes et du sol</title>
+    <title>Affichage des montagnes ciel et sol</title>
     <style>
       body {
         margin: 0;
@@ -19,13 +19,6 @@
 
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
-
-      // Créer le sol orange
-      const groundGeometry = new THREE.PlaneGeometry(100, 25);
-      const groundMaterial = new THREE.MeshBasicMaterial({ color: 0xff8c00 });
-      const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-      ground.position.set(0, -10, -50);
-      scene.add(ground);
 
       // Créer les montagnes
       const mountainGeometry = new THREE.ConeGeometry(10, 20, 32);
