@@ -1,69 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Affichage des montagnes, du sol et du ciel</title>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden; /* Empêche le défilement de la page */
-      }
-    </style>
-  </head>
-  <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-      // Créer la scène, la caméra et le rendu
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer();
-
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-
-      // Créer le sol orange
-      const groundGeometry = new THREE.PlaneGeometry(100, 25);
-      const groundMaterial = new THREE.MeshPhongMaterial({ color: 0xff8c00 });
-      const ground = new THREE.Mesh(groundGeometry, groundMaterial);
-      ground.rotation.x = -Math.PI / 2;
-      ground.position.y = -12.5; // Positionner le sol légèrement en dessous de l'origine
-      scene.add(ground);
-
-      // Créer les montagnes
-      const mountainGeometry = new THREE.ConeGeometry(10, 20, 32);
-      const mountainMaterial = new THREE.MeshPhongMaterial({ color: 0x8b4513 });
-      const mountain1 = new THREE.Mesh(mountainGeometry, mountainMaterial);
-      mountain1.position.set(-20, 10, -50);
-      scene.add(mountain1);
-
-      const mountain2 = new THREE.Mesh(mountainGeometry, mountainMaterial);
-      mountain2.position.set(20, 10, -50);
-      scene.add(mountain2);
-
-      // Créer le ciel
-      const skyGeometry = new THREE.BoxGeometry(200, 200, 200);
-      const skyMaterial = new THREE.MeshBasicMaterial({ color: 0xffc0cb, side: THREE.BackSide });
-      const sky = new THREE.Mesh(skyGeometry, skyMaterial);
-      scene.add(sky);
-
-      // Positionner et orienter la caméra
-      camera.position.z = 30;
-
-      // Ajouter des lumières à la scène
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-      scene.add(ambientLight);
-
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.7);
-      directionalLight.position.set(0, 1, 0);
-      scene.add(directionalLight);
-
-      // Fonction d'animation
-      function animate() {
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-      }
-
-      animate();
-    </script>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <title>Ma première scène Babylon.js</title>
+  <style>
+    body { margin: 0; }
+    #renderCanvas { width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+  <canvas id="renderCanvas"></canvas>
+  <script src="script.js"></script>
+</body>
 </html>
